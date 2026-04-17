@@ -942,64 +942,71 @@
   </div>
 
   <script>
-  (function(){
-    const $=id=>document.getElementById(id);
-    const els={
-      cfoFee:$("cfoFee"),cfoFeeValue:$("cfoFeeValue"),cfoReferrals:$("cfoReferrals"),
-      cfoFlat:$("cfoFlat"),cfoRecurring:$("cfoRecurring"),
-      webFee:$("webFee"),webFeeValue:$("webFeeValue"),webReferrals:$("webReferrals"),
-      designFee:$("designFee"),designFeeValue:$("designFeeValue"),designReferrals:$("designReferrals"),
-      seoFee:$("seoFee"),seoFeeValue:$("seoFeeValue"),seoReferrals:$("seoReferrals"),
-      heroTotal:$("heroTotal"),heroSub:$("heroSub"),heroReferrals:$("heroReferrals"),heroBestLine:$("heroBestLine"),
-      grandTotal:$("grandTotal"),grandSub:$("grandSub"),
-      cfoPayout:$("cfoPayout"),webPayout:$("webPayout"),designPayout:$("designPayout"),seoPayout:$("seoPayout"),
-      cfoModeTag:$("cfoModeTag"),
-      cfoBar:$("cfoBar"),webBar:$("webBar"),designBar:$("designBar"),seoBar:$("seoBar"),
-      cfoBarLabel:$("cfoBarLabel"),webBarLabel:$("webBarLabel"),designBarLabel:$("designBarLabel"),seoBarLabel:$("seoBarLabel")
+  document.addEventListener("DOMContentLoaded", function(){
+    function byId(id){ return document.getElementById(id); }
+    var els={
+      cfoFee:byId("cfoFee"),cfoFeeValue:byId("cfoFeeValue"),cfoReferrals:byId("cfoReferrals"),
+      cfoFlat:byId("cfoFlat"),cfoRecurring:byId("cfoRecurring"),
+      webFee:byId("webFee"),webFeeValue:byId("webFeeValue"),webReferrals:byId("webReferrals"),
+      designFee:byId("designFee"),designFeeValue:byId("designFeeValue"),designReferrals:byId("designReferrals"),
+      seoFee:byId("seoFee"),seoFeeValue:byId("seoFeeValue"),seoReferrals:byId("seoReferrals"),
+      heroTotal:byId("heroTotal"),heroSub:byId("heroSub"),heroReferrals:byId("heroReferrals"),heroBestLine:byId("heroBestLine"),
+      grandTotal:byId("grandTotal"),grandSub:byId("grandSub"),
+      cfoPayout:byId("cfoPayout"),webPayout:byId("webPayout"),designPayout:byId("designPayout"),seoPayout:byId("seoPayout"),
+      cfoModeTag:byId("cfoModeTag"),
+      cfoBar:byId("cfoBar"),webBar:byId("webBar"),designBar:byId("designBar"),seoBar:byId("seoBar"),
+      cfoBarLabel:byId("cfoBarLabel"),webBarLabel:byId("webBarLabel"),designBarLabel:byId("designBarLabel"),seoBarLabel:byId("seoBarLabel")
     };
-    const numInputs=[els.cfoReferrals,els.webReferrals,els.designReferrals,els.seoReferrals];
-    function cur(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v)}
-    function sInt(v,mn=0,mx=500){const c=String(v??"").replace(/[^\d]/g,"");const p=parseInt(c,10);if(isNaN(p))return mn;return Math.min(Math.max(p,mn),mx)}
-    function setV(i,v){const s=sInt(v);i.value=s;return s}
+    var numInputs=[els.cfoReferrals,els.webReferrals,els.designReferrals,els.seoReferrals];
+    function cur(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v);}
+    function sInt(v,mn,mx){mn=mn||0;mx=mx||500;var c=String(v==null?"":v).replace(/[^\d]/g,"");var p=parseInt(c,10);if(isNaN(p))return mn;return Math.min(Math.max(p,mn),mx);}
+    function setV(i,v){var s=sInt(v);i.value=s;return s;}
     function getV(){
-      const cfoFee=+els.cfoFee.value,cfoR=setV(els.cfoReferrals,els.cfoReferrals.value),
+      var cfoFee=+els.cfoFee.value, cfoR=setV(els.cfoReferrals,els.cfoReferrals.value),
         cfoM=els.cfoRecurring.checked?"recurring":"flat",
-        webFee=+els.webFee.value,webR=setV(els.webReferrals,els.webReferrals.value),
-        desFee=+els.designFee.value,desR=setV(els.designReferrals,els.designReferrals.value),
-        seoFee=+els.seoFee.value,seoR=setV(els.seoReferrals,els.seoReferrals.value);
-      const cfoP=cfoM==="flat"?cfoR*500:cfoR*(cfoFee*0.10*12),
-        webP=webR*(webFee*0.10),desP=desR*(desFee*0.10),seoP=seoR*seoFee;
-      return{cfoFee,cfoR,cfoM,cfoP,webFee,webR,webP,desFee,desR,desP,seoFee,seoR,seoP,
+        webFee=+els.webFee.value, webR=setV(els.webReferrals,els.webReferrals.value),
+        desFee=+els.designFee.value, desR=setV(els.designReferrals,els.designReferrals.value),
+        seoFee=+els.seoFee.value, seoR=setV(els.seoReferrals,els.seoReferrals.value);
+      var cfoP=cfoM==="flat"?cfoR*500:cfoR*(cfoFee*0.10*12),
+        webP=webR*(webFee*0.10), desP=desR*(desFee*0.10), seoP=seoR*seoFee;
+      return{cfoFee:cfoFee,cfoR:cfoR,cfoM:cfoM,cfoP:cfoP,webFee:webFee,webR:webR,webP:webP,desFee:desFee,desR:desR,desP:desP,seoFee:seoFee,seoR:seoR,seoP:seoP,
         total:cfoR+webR+desR+seoR,income:cfoP+webP+desP+seoP};
     }
     function update(){
-      const v=getV();
+      var v=getV();
       els.cfoFeeValue.textContent=cur(v.cfoFee);
       els.webFeeValue.textContent=cur(v.webFee);
       els.designFeeValue.textContent=cur(v.desFee);
       els.seoFeeValue.textContent=cur(v.seoFee);
-      els.cfoPayout.textContent=cur(v.cfoP);els.webPayout.textContent=cur(v.webP);
-      els.designPayout.textContent=cur(v.desP);els.seoPayout.textContent=cur(v.seoP);
-      els.cfoBarLabel.textContent=cur(v.cfoP);els.webBarLabel.textContent=cur(v.webP);
-      els.designBarLabel.textContent=cur(v.desP);els.seoBarLabel.textContent=cur(v.seoP);
-      els.heroTotal.textContent=cur(v.income);els.grandTotal.textContent=cur(v.income);
+      els.cfoPayout.textContent=cur(v.cfoP);
+      els.webPayout.textContent=cur(v.webP);
+      els.designPayout.textContent=cur(v.desP);
+      els.seoPayout.textContent=cur(v.seoP);
+      els.cfoBarLabel.textContent=cur(v.cfoP);
+      els.webBarLabel.textContent=cur(v.webP);
+      els.designBarLabel.textContent=cur(v.desP);
+      els.seoBarLabel.textContent=cur(v.seoP);
+      els.heroTotal.textContent=cur(v.income);
+      els.grandTotal.textContent=cur(v.income);
       els.heroReferrals.textContent=v.total;
       els.grandSub.textContent="Modeled from "+v.total+" referral"+(v.total===1?"":"s")+" across CFO, Web, Design, and SEO.";
       els.heroSub.textContent="Based on "+v.total+" projected referral"+(v.total===1?"":"s")+" across all Turnkey Services lines.";
       els.cfoModeTag.textContent=v.cfoM==="flat"?"Flat $500":"10% Annual";
-      const svc=[{n:"CFO",v:v.cfoP},{n:"Web",v:v.webP},{n:"Design",v:v.desP},{n:"SEO",v:v.seoP}];
-      const best=svc.reduce((a,b)=>b.v>a.v?b:a,{n:"\u2014",v:0});
+      var svc=[{n:"CFO",v:v.cfoP},{n:"Web",v:v.webP},{n:"Design",v:v.desP},{n:"SEO",v:v.seoP}];
+      var best=svc.reduce(function(a,b){return b.v>a.v?b:a;},{n:"\u2014",v:0});
       els.heroBestLine.textContent=best.v>0?best.n:"\u2014";
-      const mx=Math.max(v.cfoP,v.webP,v.desP,v.seoP,1);
-      els.cfoBar.style.width=(v.cfoP/mx)*100+"%";els.webBar.style.width=(v.webP/mx)*100+"%";
-      els.designBar.style.width=(v.desP/mx)*100+"%";els.seoBar.style.width=(v.seoP/mx)*100+"%";
+      var mx=Math.max(v.cfoP,v.webP,v.desP,v.seoP,1);
+      els.cfoBar.style.width=(v.cfoP/mx)*100+"%";
+      els.webBar.style.width=(v.webP/mx)*100+"%";
+      els.designBar.style.width=(v.desP/mx)*100+"%";
+      els.seoBar.style.width=(v.seoP/mx)*100+"%";
     }
-    document.querySelectorAll("[data-target]").forEach(b=>{
-      b.addEventListener("click",()=>{const t=$(b.dataset.target),s=+b.dataset.step;t.value=Math.max(0,sInt(t.value)+s);update()});
-    });
-    numInputs.forEach(i=>{["input","change","blur"].forEach(e=>i.addEventListener(e,()=>{setV(i,i.value);update()}))});
-    [els.cfoFee,els.webFee,els.designFee,els.seoFee].forEach(i=>{i.addEventListener("input",update);i.addEventListener("change",update)});
-    [els.cfoFlat,els.cfoRecurring].forEach(i=>i.addEventListener("change",update));
-    update();
-    // FAQ
-    document.querySelectorAll(".faq-q").forEach(btn=>{btn.addEventListener("click",()=>{bt
+    var stepBtns=document.querySelectorAll("[data-target]");
+    for(var i=0;i<stepBtns.length;i++){
+      (function(b){
+        b.addEventListener("click",function(){
+          var t=byId(b.getAttribute("data-target"));
+          var s=parseInt(b.getAttribute("data-step"),10);
+          t.value=Math.max(0,sInt(t.value)+s);
+          update();
+      
