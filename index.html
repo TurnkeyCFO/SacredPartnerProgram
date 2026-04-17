@@ -10,34 +10,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* TurnkeyCFO Rebrand Palette */
-      --green-bright:  #16C784;
-      --green-mid:     #059669;
-      --green-dark:    #047857;
-      --green-deep:    #064E3B;
-      --green-darkest: #0B1F1A;
+      /* TurnkeyCFO Brand Palette */
+      --green-bright:  #1A1A1A;
+      --green-mid:     #2D2D2D;
+      --green-dark:    #0B0B08;
+      --green-deep:    #0B0B08;
+      --green-darkest: #0B0B08;
 
       /* Light Theme Surfaces */
       --bg:          #FFFFFF;
-      --bg-soft:     #F7FAF8;
-      --bg-tint:     #EFF6F2;
+      --bg-soft:     #F7F7F7;
+      --bg-tint:     #EDEDED;
       --bg-card:     #FFFFFF;
-      --bg-mint:     #E6EDE9;
+      --bg-mint:     #EDEDED;
 
       /* Text */
-      --text:        #0B1F1A;
-      --text-mid:    #2D4A40;
-      --text-soft:   #5A7A6E;
-      --text-muted:  #8CA49A;
+      --text:        #0B0B08;
+      --text-mid:    #1A1A1A;
+      --text-soft:   #5A5A5A;
+      --text-muted:  #A1A1A1;
 
       /* Borders */
-      --border:      rgba(11, 31, 26, 0.09);
-      --border-green:rgba(22, 199, 132, 0.18);
+      --border:      rgba(11, 11, 8, 0.09);
+      --border-green:rgba(26, 26, 26, 0.18);
 
       /* Shadows */
-      --shadow:      0 20px 60px rgba(11, 31, 26, 0.08);
-      --shadow-sm:   0 4px 20px rgba(11, 31, 26, 0.06);
-      --shadow-green:0 8px 32px rgba(22, 199, 132, 0.15);
+      --shadow:      0 20px 60px rgba(11, 11, 8, 0.08);
+      --shadow-sm:   0 4px 20px rgba(11, 11, 8, 0.06);
+      --shadow-green:0 8px 32px rgba(26, 26, 26, 0.15);
 
       --radius-xl: 28px;
       --radius-lg: 22px;
@@ -59,8 +59,8 @@
     .bg-glow {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(22,199,132,0.06), transparent),
-        radial-gradient(ellipse 50% 40% at 10% 30%, rgba(5,150,105,0.04), transparent);
+        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(26,26,26,0.06), transparent),
+        radial-gradient(ellipse 50% 40% at 10% 30%, rgba(45,45,45,0.04), transparent);
     }
 
     .shell { position: relative; z-index: 1; }
@@ -95,7 +95,7 @@
       cursor: pointer; transition: all 200ms ease; font-weight: 600; font-size: 13px;
       color: var(--text-mid); background: transparent; font-family: inherit;
     }
-    .chip:hover { border-color: var(--green-bright); color: var(--green-dark); background: rgba(22,199,132,0.04); }
+    .chip:hover { border-color: var(--green-bright); color: var(--green-dark); background: rgba(26,26,26,0.04); }
 
     .btn-cta {
       display: inline-flex; align-items: center; gap: 8px;
@@ -105,7 +105,7 @@
       transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
       box-shadow: var(--shadow-green);
     }
-    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(22,199,132,0.25); }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(26,26,26,0.25); }
 
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
@@ -114,7 +114,7 @@
       padding: 12px 26px; border-radius: 50px; cursor: pointer; text-decoration: none;
       border: 2px solid var(--green-bright); transition: all 200ms ease;
     }
-    .btn-outline:hover { background: rgba(22,199,132,0.06); border-color: var(--green-mid); }
+    .btn-outline:hover { background: rgba(26,26,26,0.06); border-color: var(--green-mid); }
 
     /* ── HERO ── */
     .hero { padding: 40px 0 20px; }
@@ -126,12 +126,12 @@
     .hero-copy { padding: 44px 42px 38px; position: relative; }
     .hero-copy::after {
       content: ""; position: absolute; right: -80px; top: -60px; width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(22,199,132,0.08), transparent 65%); pointer-events: none;
+      background: radial-gradient(circle, rgba(26,26,26,0.08), transparent 65%); pointer-events: none;
     }
     .eyebrow-pill {
       display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
       border-radius: 999px; border: 1px solid var(--border-green);
-      background: rgba(22,199,132,0.06); color: var(--green-dark);
+      background: rgba(26,26,26,0.06); color: var(--green-dark);
       font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700;
     }
     .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); animation: pulse-dot 2s ease infinite; }
@@ -172,13 +172,13 @@
       position: relative;
     }
     .hero-side::before {
-      content: ""; position: absolute; inset: 14px; border: 1px solid rgba(22,199,132,0.08);
+      content: ""; position: absolute; inset: 14px; border: 1px solid rgba(26,26,26,0.08);
       border-radius: 22px; pointer-events: none;
     }
     .mini-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
     .mini-title { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 700; }
     .live-pill {
-      padding: 6px 12px; border-radius: 999px; background: rgba(22,199,132,0.08);
+      padding: 6px 12px; border-radius: 999px; background: rgba(26,26,26,0.08);
       border: 1px solid var(--border-green); color: var(--green-dark);
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
       display: flex; align-items: center; gap: 6px;
@@ -187,7 +187,7 @@
 
     .hero-total {
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(22,199,132,0.06), rgba(5,150,105,0.03));
+      background: linear-gradient(135deg, rgba(26,26,26,0.06), rgba(45,45,45,0.03));
       border: 1px solid var(--border-green); padding: 28px; margin-bottom: 18px;
     }
     .hero-total .label { display: block; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; margin-bottom: 8px; }
@@ -213,7 +213,7 @@
     }
     .trust-item { display: flex; align-items: center; gap: 10px; color: var(--text-soft); font-size: 13px; font-weight: 600; }
     .trust-icon {
-      width: 36px; height: 36px; border-radius: 10px; background: rgba(22,199,132,0.06);
+      width: 36px; height: 36px; border-radius: 10px; background: rgba(26,26,26,0.06);
       border: 1px solid var(--border-green); display: grid; place-items: center; font-size: 16px;
     }
 
@@ -263,7 +263,7 @@
     .service-title-wrap p { margin-top: 8px; color: var(--text-soft); font-size: 14px; line-height: 1.7; max-width: 480px; }
     .service-title-wrap p strong { color: var(--green-dark); font-weight: 700; }
     .service-tag {
-      padding: 8px 14px; border-radius: 999px; background: rgba(22,199,132,0.06);
+      padding: 8px 14px; border-radius: 999px; background: rgba(26,26,26,0.06);
       border: 1px solid var(--border-green); color: var(--green-dark);
       font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.10em; white-space: nowrap;
     }
@@ -281,10 +281,10 @@
     .num-stepper { display: grid; grid-template-columns: 52px 1fr 52px; gap: 8px; align-items: center; padding: 8px; }
     .num-stepper button {
       height: 50px; border-radius: 14px; border: 0;
-      background: rgba(22,199,132,0.08); color: var(--green-dark);
+      background: rgba(26,26,26,0.08); color: var(--green-dark);
       font-size: 24px; cursor: pointer; transition: all 200ms ease; font-family: inherit; font-weight: 700;
     }
-    .num-stepper button:hover { background: rgba(22,199,132,0.16); }
+    .num-stepper button:hover { background: rgba(26,26,26,0.16); }
     .num-stepper input {
       width: 100%; border: 0; outline: 0; background: transparent;
       color: var(--text); text-align: center; font-size: 28px; font-weight: 800; font-family: inherit;
@@ -304,11 +304,11 @@
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
       background: var(--green-bright); border: 3px solid #fff;
-      box-shadow: 0 2px 8px rgba(22,199,132,0.35); cursor: pointer;
+      box-shadow: 0 2px 8px rgba(26,26,26,0.35); cursor: pointer;
     }
     input[type="range"]::-moz-range-thumb {
       width: 22px; height: 22px; border-radius: 50%; background: var(--green-bright);
-      border: 3px solid #fff; box-shadow: 0 2px 8px rgba(22,199,132,0.35); cursor: pointer;
+      border: 3px solid #fff; box-shadow: 0 2px 8px rgba(26,26,26,0.35); cursor: pointer;
     }
     .range-minmax {
       display: flex; justify-content: space-between; gap: 12px; margin-top: 8px;
@@ -324,7 +324,7 @@
     .radio-grid label strong { display: block; font-size: 16px; letter-spacing: -0.02em; color: var(--text); }
     .radio-grid label small { display: block; margin-top: 5px; color: var(--text-soft); font-size: 12px; line-height: 1.5; font-weight: 500; }
     .radio-grid input:checked + label {
-      border-color: var(--green-bright); background: rgba(22,199,132,0.04);
+      border-color: var(--green-bright); background: rgba(26,26,26,0.04);
       box-shadow: 0 0 0 1px var(--green-bright);
     }
     .field-note { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
@@ -338,7 +338,7 @@
     .results-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
     .results-head h3 { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); }
     .badge-est {
-      padding: 8px 14px; border-radius: 999px; background: rgba(22,199,132,0.06);
+      padding: 8px 14px; border-radius: 999px; background: rgba(26,26,26,0.06);
       border: 1px solid var(--border-green); color: var(--green-dark);
       font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
     }
@@ -364,7 +364,7 @@
     .payout-row .label { display: block; color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 4px; }
     .payout-row .value { display: block; font-size: 24px; letter-spacing: -0.04em; font-weight: 800; color: var(--text); }
     .payout-row .tag {
-      padding: 6px 10px; border-radius: 999px; background: rgba(22,199,132,0.06);
+      padding: 6px 10px; border-radius: 999px; background: rgba(26,26,26,0.06);
       border: 1px solid var(--border-green); color: var(--green-dark);
       font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap;
     }
@@ -414,7 +414,7 @@
     .logic-card:hover { border-color: var(--border-green); transform: translateY(-2px); box-shadow: var(--shadow); }
     .logic-card .icon-wrap {
       width: 44px; height: 44px; border-radius: 12px; margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(22,199,132,0.10), rgba(5,150,105,0.06));
+      background: linear-gradient(135deg, rgba(26,26,26,0.10), rgba(45,45,45,0.06));
       border: 1px solid var(--border-green); display: grid; place-items: center; font-size: 20px;
     }
     .logic-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
@@ -454,11 +454,11 @@
     }
     .cta-card::before {
       content: ""; position: absolute; top: -100px; right: -80px; width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(22,199,132,0.20), transparent 60%); pointer-events: none;
+      background: radial-gradient(circle, rgba(26,26,26,0.20), transparent 60%); pointer-events: none;
     }
     .cta-card::after {
       content: ""; position: absolute; bottom: -120px; left: -60px; width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(22,199,132,0.10), transparent 60%); pointer-events: none;
+      background: radial-gradient(circle, rgba(26,26,26,0.10), transparent 60%); pointer-events: none;
     }
     .cta-card h2 { font-size: clamp(26px, 3.8vw, 42px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; position: relative; }
     .cta-card p { max-width: 540px; margin: 0 auto 28px; color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; position: relative; }
@@ -523,7 +523,7 @@
             <text x="0" y="40" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="42" fill="#0B1F1A">T</text>
             <path d="M28 8 L28 42 L22 42 L22 14 L28 8Z" fill="#0B1F1A"/>
             <path d="M28 22 L44 8 L44 16 L32 28 L44 40 L44 48 L28 34Z" fill="url(#gKlogo)"/>
-            <defs><linearGradient id="gKlogo" x1="28" y1="8" x2="44" y2="48"><stop offset="0%" stop-color="#16C784"/><stop offset="100%" stop-color="#059669"/></linearGradient></defs>
+            <defs><linearGradient id="gKlogo" x1="28" y1="8" x2="44" y2="48"><stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#5A5A5A"/></linearGradient></defs>
             <text x="54" y="28" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="20" letter-spacing="3" fill="#0B1F1A">TURNKEY</text>
             <text x="56" y="43" font-family="Plus Jakarta Sans, sans-serif" font-weight="600" font-size="11" letter-spacing="5" fill="#5A7A6E">CFO</text>
           </svg>
@@ -902,16 +902,16 @@
             <div class="section-divider"></div>
           </div>
           <div class="faq-grid">
-            <div class="faq-item fade-up"><button class="faq-q">Who can be a Sacred Partner?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">CPAs, accountants, fractional CFOs, financial advisors, business consultants, software consultants, payroll partners, bankers, attorneys, and anyone who works with small-business owners. If you regularly encounter businesses that need cleaner books, better branding, a stronger web presence, or growth strategy, you qualify.</div></div>
+            <div class="faq-item fade-up"><button class="faq-q">Who can be a Turnkey Sacred Partner?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">CPAs, accountants, church leaders, fractional CFOs, financial advisors, business consultants, software consultants, payroll partners, bankers, attorneys, and anyone who works with small-business owners. If you regularly encounter businesses that need cleaner books, better branding, a stronger web presence, or growth strategy, you qualify.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">What counts as a qualified referral?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">A qualified referral is a <strong>net-new business prospect</strong> that is not currently a Turnkey client, not in our active pipeline, and fits our ideal customer profile. The referred business must complete our sales process and pay their first invoice for your payout to be triggered.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">When do I get paid?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">Payouts are calculated monthly. Once the referred client pays their first invoice and completes a <strong>30-day hold period</strong>, your payout is approved and sent. Most partners receive their first payment within 60 days of the referral closing.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">Is there a cap on how much I can earn?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><strong>No cap.</strong> Your earnings scale with the number and size of referrals you send. Whether you refer 2 businesses a year or 20, there is no ceiling on partner income.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">Can I refer to multiple service lines at once?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">Absolutely. If a single business needs CFO services and a new website, you earn on both. <strong>Each service line pays independently.</strong> Cross-service referrals are the fastest way to increase your annual partner income.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">Do I need to sell or manage the project?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><strong>Never.</strong> Your only job is the introduction. Turnkey handles all sales conversations, scoping, proposals, onboarding, and service delivery. You stay informed on referral status but never have to negotiate, pitch, or manage anything.</div></div>
             <div class="faq-item fade-up"><button class="faq-q">What if I'm a CPA or licensed professional?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">We respect professional conduct rules. If your licensure requires disclosure of referral compensation, we support that fully. Our partner agreement includes written disclosure provisions, and we offer non-cash co-marketing options for partners where direct compensation is restricted.</div></div>
-            <div class="faq-item fade-up"><button class="faq-q">What happens if a client cancels early?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">For project-based work (Web, Design), your payout is locked once the client pays. For recurring services (CFO, SEO), payouts are protected after the hold period. If a refund occurs during the hold window, the payout may be adjusted, but <strong>once the hold period clears, your payout is final.</strong></div></div>
-            <div class="faq-item fade-up"><button class="faq-q">How do I track my referrals and payouts?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">Every partner receives a <strong>unique tracking link and a partner dashboard</strong> showing submitted referrals, qualification status, closed deals, and payout history. You always know exactly where each referral stands.</div></div>
-            <div class="faq-item fade-up"><button class="faq-q">What's the typical referral trigger?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">The strongest referral triggers are: <strong>unreconciled accounts, delayed month-end close, outdated or broken website, no brand identity, invisible on Google, tax-season scrambles, lender documentation requests,</strong> or growth that has outrun a business's back-office capacity.</div></div>
+            <div class="faq-item fade-up"><button class="faq-q">What happens if a client cancels early?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">For project-based work (Web, Design), your payout is locked once the client pays. For recurring services (CFO, SEO), payouts are protected after the hold period. If a refund occurs during the hold window, the payout may be adjusted. <strong>If a client cancels their service, partner payouts will discontinue in tandem.</strong> Once the hold period clears, any payouts already issued are final.</div></div>
+            <div class="faq-item fade-up"><button class="faq-q">How do I track my referrals and payouts?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">We send every partner a <strong>monthly statement</strong> with a full breakdown of your referral income &mdash; including referral status, closed deals, payout amounts, and cumulative earnings. You always know exactly where each referral stands and what you&rsquo;ve earned.</div></div>
+            <div class="faq-item fade-up"><button class="faq-q">What's the typical referral trigger?<span class="faq-arrow">&#9662;</span></button><div class="faq-a">Referral moments happen more often than you think. If you <strong>overhear someone starting a business</strong>, that&rsquo;s a huge opportunity &mdash; new businesses need books, branding, and a web presence from day one. If a colleague <strong>vents about messy financials or tax surprises</strong>, ask who handles their books &mdash; that&rsquo;s your cue. When someone says <strong>&ldquo;our website is outdated&rdquo;</strong> or <strong>&ldquo;we don&rsquo;t show up on Google,&rdquo;</strong> mention Turnkey Web or SEO. Even a casual <strong>&ldquo;business is growing fast and I can&rsquo;t keep up&rdquo;</strong> is an opening &mdash; Turnkey CFO helps businesses scale operations. The best partners simply listen for frustration and ask one question: <em>&ldquo;Have you talked to Turnkey?&rdquo;</em></div></div>
           </div>
         </div>
       </section>
@@ -1016,24 +1016,4 @@
     }
   });
 
-  document.addEventListener("input", function(e){
-    var id = e.target.id;
-    if(id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
-       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
-      _update();
-    }
-  });
-
-  document.addEventListener("change", function(e){
-    var id = e.target.id;
-    if(id==="cfoFlat"||id==="cfoRecurring"||id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
-       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
-      _update();
-    }
-  });
-
-  /* ── initial render ── */
-  _update();
-  </script>
-</body>
-</html>
+  document.addE
