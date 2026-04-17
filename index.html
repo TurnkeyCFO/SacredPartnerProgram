@@ -1010,4 +1010,60 @@
     _byId("designBarLabel").textContent = _cur(desP);
     _byId("seoBarLabel").textContent    = _cur(seoP);
 
-    _
+
+    _byId("heroTotal").textContent    = _cur(income);
+    _byId("grandTotal").textContent   = _cur(income);
+    _byId("heroReferrals").textContent = total;
+    _byId("grandSub").textContent     = "Modeled from "+total+" referral"+(total===1?"":"s")+" across CFO, Web, Design, and SEO.";
+    _byId("heroSub").textContent      = "Based on "+total+" projected referral"+(total===1?"":"s")+" across all Turnkey Services lines.";
+    _byId("cfoModeTag").textContent   = cfoM==="flat" ? "Flat $500" : "10% Annual";
+
+    var svc=[{n:"CFO",v:cfoP},{n:"Web",v:webP},{n:"Design",v:desP},{n:"SEO",v:seoP}];
+    var best={n:"\u2014",v:0};
+    for(var i=0;i<svc.length;i++){ if(svc[i].v>best.v) best=svc[i]; }
+    _byId("heroBestLine").textContent = best.v>0 ? best.n : "\u2014";
+
+    var mx=Math.max(cfoP,webP,desP,seoP,1);
+    _byId("cfoBar").style.width    = (cfoP/mx)*100+"%";
+    _byId("webBar").style.width    = (webP/mx)*100+"%";
+    _byId("designBar").style.width = (desP/mx)*100+"%";
+    _byId("seoBar").style.width    = (seoP/mx)*100+"%";
+  }
+
+  /* event delegation */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest("[data-target]");
+    if(btn){
+      var t = _byId(btn.getAttribute("data-target"));
+      var s = parseInt(btn.getAttribute("data-step"),10);
+      t.value = Math.max(0, _sInt(t.value) + s);
+      _update();
+      return;
+    }
+    var faq = e.target.closest(".faq-q");
+    if(faq){
+      faq.parentElement.classList.toggle("open");
+      return;
+    }
+  });
+
+  document.addEventListener("input", function(e){
+    var id = e.target.id;
+    if(id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
+       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
+      _update();
+    }
+  });
+
+  document.addEventListener("change", function(e){
+    var id = e.target.id;
+    if(id==="cfoFlat"||id==="cfoRecurring"||id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
+       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
+      _update();
+    }
+  });
+
+  _update();
+  </script>
+</body>
+</html>
