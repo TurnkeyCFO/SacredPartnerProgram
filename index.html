@@ -942,7 +942,7 @@
   </div>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function(){
+  (function(){
     function byId(id){ return document.getElementById(id); }
     var els={
       cfoFee:byId("cfoFee"),cfoFeeValue:byId("cfoFeeValue"),cfoReferrals:byId("cfoReferrals"),
@@ -1009,4 +1009,7 @@
           var s=parseInt(b.getAttribute("data-step"),10);
           t.value=Math.max(0,sInt(t.value)+s);
           update();
-      
+        });
+      })(stepBtns[i]);
+    }
+    for(va
