@@ -99,22 +99,29 @@
 
     .btn-cta {
       display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+      background: linear-gradient(135deg, #0B0B08 0%, #2D2D2D 40%, #5A5A5A 100%);
       color: #fff; font-family: inherit; font-size: 14px; font-weight: 700;
       padding: 12px 26px; border-radius: 50px; border: none; cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
-      box-shadow: var(--shadow-green);
+      box-shadow: 0 8px 32px rgba(11,11,8,0.25);
+      position: relative; overflow: hidden;
     }
-    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(26,26,26,0.25); }
+    .btn-cta::before {
+      content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      animation: btn-shimmer 3s ease-in-out infinite;
+    }
+    @keyframes btn-shimmer { 0%{left:-100%} 50%{left:100%} 100%{left:100%} }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(11,11,8,0.35); }
 
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--green-dark);
+      background: transparent; color: #1A1A1A;
       font-family: inherit; font-size: 14px; font-weight: 700;
       padding: 12px 26px; border-radius: 50px; cursor: pointer; text-decoration: none;
-      border: 2px solid var(--green-bright); transition: all 200ms ease;
+      border: 2px solid #2D2D2D; transition: all 200ms ease;
     }
-    .btn-outline:hover { background: rgba(26,26,26,0.06); border-color: var(--green-mid); }
+    .btn-outline:hover { background: linear-gradient(135deg, #0B0B08, #2D2D2D); color: #fff; border-color: #0B0B08; }
 
     /* ── HERO ── */
     .hero { padding: 40px 0 20px; }
@@ -142,10 +149,13 @@
       letter-spacing: -0.04em; font-weight: 800; color: var(--green-darkest);
     }
     .hero h1 .accent {
-      background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+      background: linear-gradient(90deg, #0B0B08, #5A5A5A, #A1A1A1, #5A5A5A, #0B0B08);
+      background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: text-shimmer 4s ease-in-out infinite;
     }
+    @keyframes text-shimmer { 0%{background-position:0% center} 100%{background-position:200% center} }
     .hero p { max-width: 520px; color: var(--text-soft); font-size: 17px; line-height: 1.75; }
     .hero p strong { color: var(--text); }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
@@ -193,7 +203,12 @@
     .hero-total .label { display: block; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; margin-bottom: 8px; }
     .hero-total .big-num {
       display: block; font-size: clamp(40px, 6vw, 64px); letter-spacing: -0.05em;
-      line-height: 0.96; font-weight: 800; color: var(--green-darkest);
+      line-height: 0.96; font-weight: 800;
+      background: linear-gradient(90deg, #0B0B08, #5A5A5A, #A1A1A1, #5A5A5A, #0B0B08);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: text-shimmer 4s ease-in-out infinite;
     }
     .hero-total .sub { margin-top: 12px; color: var(--text-soft); line-height: 1.7; font-size: 14px; }
 
@@ -225,10 +240,15 @@
     }
     .section-head h2 {
       font-size: clamp(26px, 3.8vw, 46px); line-height: 1.02; letter-spacing: -0.04em;
-      font-weight: 800; color: var(--green-darkest);
+      font-weight: 800;
+      background: linear-gradient(90deg, #0B0B08, #5A5A5A, #0B0B08);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: text-shimmer 5s ease-in-out infinite;
     }
     .section-head p { margin-top: 12px; max-width: 660px; color: var(--text-soft); line-height: 1.75; font-size: 16px; }
-    .section-divider { height: 3px; background: linear-gradient(90deg, var(--green-bright) 0%, transparent 50%); border-radius: 3px; margin-top: 16px; max-width: 180px; }
+    .section-divider { height: 3px; background: linear-gradient(90deg, #0B0B08 0%, #5A5A5A 40%, transparent 80%); border-radius: 3px; margin-top: 16px; max-width: 180px; }
 
     /* ── HOW IT WORKS ── */
     .how-section { padding: 32px 0 36px; }
@@ -241,7 +261,7 @@
     .step-card:hover { transform: translateY(-4px); border-color: var(--border-green); box-shadow: var(--shadow); }
     .step-num {
       width: 42px; height: 42px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+      background: linear-gradient(135deg, #0B0B08 0%, #2D2D2D 50%, #5A5A5A 100%);
       color: #fff; font-weight: 800; font-size: 17px;
       display: grid; place-items: center; margin-bottom: 18px;
     }
@@ -303,12 +323,13 @@
     }
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
-      background: var(--green-bright); border: 3px solid #fff;
-      box-shadow: 0 2px 8px rgba(26,26,26,0.35); cursor: pointer;
+      background: linear-gradient(135deg, #0B0B08, #2D2D2D); border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(11,11,8,0.35); cursor: pointer;
     }
     input[type="range"]::-moz-range-thumb {
-      width: 22px; height: 22px; border-radius: 50%; background: var(--green-bright);
-      border: 3px solid #fff; box-shadow: 0 2px 8px rgba(26,26,26,0.35); cursor: pointer;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: linear-gradient(135deg, #0B0B08, #2D2D2D);
+      border: 3px solid #fff; box-shadow: 0 2px 8px rgba(11,11,8,0.35); cursor: pointer;
     }
     .range-minmax {
       display: flex; justify-content: space-between; gap: 12px; margin-top: 8px;
@@ -344,8 +365,14 @@
     }
     .total-card {
       border-radius: 22px;
-      background: linear-gradient(135deg, var(--green-deep), var(--green-darkest));
+      background: linear-gradient(135deg, #0B0B08 0%, #1A1A1A 40%, #2D2D2D 100%);
       padding: 28px; margin-bottom: 18px; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .total-card::before {
+      content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: btn-shimmer 4s ease-in-out infinite;
     }
     .total-card .label { display: block; color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; margin-bottom: 8px; }
     .total-card .big-num {
@@ -378,7 +405,7 @@
     .bar-track { height: 10px; border-radius: 999px; background: var(--bg-mint); overflow: hidden; }
     .bar-fill {
       height: 100%; width: 0%; transition: width 300ms ease;
-      background: linear-gradient(90deg, var(--green-bright), var(--green-mid));
+      background: linear-gradient(90deg, #0B0B08, #2D2D2D, #5A5A5A);
       border-radius: 999px;
     }
 
@@ -398,7 +425,10 @@
     .scenario-card h3 { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
     .scenario-card .scenario-income {
       font-size: 34px; font-weight: 800; letter-spacing: -0.04em;
-      color: var(--green-dark); margin: 12px 0 16px;
+      background: linear-gradient(90deg, #0B0B08, #5A5A5A);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 12px 0 16px;
     }
     .scenario-card .scenario-detail { color: var(--text-soft); font-size: 13px; line-height: 1.65; }
     .scenario-card .scenario-detail strong { color: var(--text); }
@@ -448,17 +478,17 @@
     /* ── CTA ── */
     .cta-section { padding: 32px 0 40px; }
     .cta-card {
-      background: linear-gradient(135deg, var(--green-deep), var(--green-darkest));
+      background: linear-gradient(135deg, #0B0B08 0%, #1A1A1A 30%, #2D2D2D 70%, #1A1A1A 100%);
       border-radius: 28px; padding: 52px; text-align: center; position: relative; overflow: hidden;
       color: #fff;
     }
     .cta-card::before {
       content: ""; position: absolute; top: -100px; right: -80px; width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(26,26,26,0.20), transparent 60%); pointer-events: none;
+      background: radial-gradient(circle, rgba(90,90,90,0.20), transparent 60%); pointer-events: none;
     }
     .cta-card::after {
       content: ""; position: absolute; bottom: -120px; left: -60px; width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(26,26,26,0.10), transparent 60%); pointer-events: none;
+      background: radial-gradient(circle, rgba(90,90,90,0.10), transparent 60%); pointer-events: none;
     }
     .cta-card h2 { font-size: clamp(26px, 3.8vw, 42px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; position: relative; }
     .cta-card p { max-width: 540px; margin: 0 auto 28px; color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.7; position: relative; }
@@ -980,40 +1010,4 @@
     _byId("designBarLabel").textContent = _cur(desP);
     _byId("seoBarLabel").textContent    = _cur(seoP);
 
-    _byId("heroTotal").textContent    = _cur(income);
-    _byId("grandTotal").textContent   = _cur(income);
-    _byId("heroReferrals").textContent = total;
-    _byId("grandSub").textContent     = "Modeled from "+total+" referral"+(total===1?"":"s")+" across CFO, Web, Design, and SEO.";
-    _byId("heroSub").textContent      = "Based on "+total+" projected referral"+(total===1?"":"s")+" across all Turnkey Services lines.";
-    _byId("cfoModeTag").textContent   = cfoM==="flat" ? "Flat $500" : "10% Annual";
-
-    var svc=[{n:"CFO",v:cfoP},{n:"Web",v:webP},{n:"Design",v:desP},{n:"SEO",v:seoP}];
-    var best={n:"\u2014",v:0};
-    for(var i=0;i<svc.length;i++){ if(svc[i].v>best.v) best=svc[i]; }
-    _byId("heroBestLine").textContent = best.v>0 ? best.n : "\u2014";
-
-    var mx=Math.max(cfoP,webP,desP,seoP,1);
-    _byId("cfoBar").style.width    = (cfoP/mx)*100+"%";
-    _byId("webBar").style.width    = (webP/mx)*100+"%";
-    _byId("designBar").style.width = (desP/mx)*100+"%";
-    _byId("seoBar").style.width    = (seoP/mx)*100+"%";
-  }
-
-  /* ── event delegation: one listener on document handles everything ── */
-  document.addEventListener("click", function(e){
-    var btn = e.target.closest("[data-target]");
-    if(btn){
-      var t = _byId(btn.getAttribute("data-target"));
-      var s = parseInt(btn.getAttribute("data-step"),10);
-      t.value = Math.max(0, _sInt(t.value) + s);
-      _update();
-      return;
-    }
-    var faq = e.target.closest(".faq-q");
-    if(faq){
-      faq.parentElement.classList.toggle("open");
-      return;
-    }
-  });
-
-  document.addE
+    _byId("
