@@ -942,74 +942,99 @@
   </div>
 
   <script>
-  (function(){
-    function byId(id){ return document.getElementById(id); }
-    var els={
-      cfoFee:byId("cfoFee"),cfoFeeValue:byId("cfoFeeValue"),cfoReferrals:byId("cfoReferrals"),
-      cfoFlat:byId("cfoFlat"),cfoRecurring:byId("cfoRecurring"),
-      webFee:byId("webFee"),webFeeValue:byId("webFeeValue"),webReferrals:byId("webReferrals"),
-      designFee:byId("designFee"),designFeeValue:byId("designFeeValue"),designReferrals:byId("designReferrals"),
-      seoFee:byId("seoFee"),seoFeeValue:byId("seoFeeValue"),seoReferrals:byId("seoReferrals"),
-      heroTotal:byId("heroTotal"),heroSub:byId("heroSub"),heroReferrals:byId("heroReferrals"),heroBestLine:byId("heroBestLine"),
-      grandTotal:byId("grandTotal"),grandSub:byId("grandSub"),
-      cfoPayout:byId("cfoPayout"),webPayout:byId("webPayout"),designPayout:byId("designPayout"),seoPayout:byId("seoPayout"),
-      cfoModeTag:byId("cfoModeTag"),
-      cfoBar:byId("cfoBar"),webBar:byId("webBar"),designBar:byId("designBar"),seoBar:byId("seoBar"),
-      cfoBarLabel:byId("cfoBarLabel"),webBarLabel:byId("webBarLabel"),designBarLabel:byId("designBarLabel"),seoBarLabel:byId("seoBarLabel")
-    };
-    var numInputs=[els.cfoReferrals,els.webReferrals,els.designReferrals,els.seoReferrals];
-    function cur(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v);}
-    function sInt(v,mn,mx){mn=mn||0;mx=mx||500;var c=String(v==null?"":v).replace(/[^\d]/g,"");var p=parseInt(c,10);if(isNaN(p))return mn;return Math.min(Math.max(p,mn),mx);}
-    function setV(i,v){var s=sInt(v);i.value=s;return s;}
-    function getV(){
-      var cfoFee=+els.cfoFee.value, cfoR=setV(els.cfoReferrals,els.cfoReferrals.value),
-        cfoM=els.cfoRecurring.checked?"recurring":"flat",
-        webFee=+els.webFee.value, webR=setV(els.webReferrals,els.webReferrals.value),
-        desFee=+els.designFee.value, desR=setV(els.designReferrals,els.designReferrals.value),
-        seoFee=+els.seoFee.value, seoR=setV(els.seoReferrals,els.seoReferrals.value);
-      var cfoP=cfoM==="flat"?cfoR*500:cfoR*(cfoFee*0.10*12),
-        webP=webR*(webFee*0.10), desP=desR*(desFee*0.10), seoP=seoR*seoFee;
-      return{cfoFee:cfoFee,cfoR:cfoR,cfoM:cfoM,cfoP:cfoP,webFee:webFee,webR:webR,webP:webP,desFee:desFee,desR:desR,desP:desP,seoFee:seoFee,seoR:seoR,seoP:seoP,
-        total:cfoR+webR+desR+seoR,income:cfoP+webP+desP+seoP};
+  /* ── helpers ── */
+  function _byId(id){ return document.getElementById(id); }
+  function _cur(v){ return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v); }
+  function _sInt(v){ var c=String(v==null?"":v).replace(/[^\d]/g,""); var p=parseInt(c,10); if(isNaN(p)) return 0; return Math.min(Math.max(p,0),500); }
+
+  function _update(){
+    var cfoFee  = +_byId("cfoFee").value;
+    var cfoR    = _sInt(_byId("cfoReferrals").value);
+    var cfoM    = _byId("cfoRecurring").checked ? "recurring" : "flat";
+    var webFee  = +_byId("webFee").value;
+    var webR    = _sInt(_byId("webReferrals").value);
+    var desFee  = +_byId("designFee").value;
+    var desR    = _sInt(_byId("designReferrals").value);
+    var seoFee  = +_byId("seoFee").value;
+    var seoR    = _sInt(_byId("seoReferrals").value);
+
+    var cfoP = cfoM==="flat" ? cfoR*500 : cfoR*(cfoFee*0.10*12);
+    var webP = webR*(webFee*0.10);
+    var desP = desR*(desFee*0.10);
+    var seoP = seoR*seoFee;
+    var total = cfoR+webR+desR+seoR;
+    var income = cfoP+webP+desP+seoP;
+
+    _byId("cfoFeeValue").textContent  = _cur(cfoFee);
+    _byId("webFeeValue").textContent  = _cur(webFee);
+    _byId("designFeeValue").textContent = _cur(desFee);
+    _byId("seoFeeValue").textContent  = _cur(seoFee);
+
+    _byId("cfoPayout").textContent    = _cur(cfoP);
+    _byId("webPayout").textContent    = _cur(webP);
+    _byId("designPayout").textContent = _cur(desP);
+    _byId("seoPayout").textContent    = _cur(seoP);
+
+    _byId("cfoBarLabel").textContent    = _cur(cfoP);
+    _byId("webBarLabel").textContent    = _cur(webP);
+    _byId("designBarLabel").textContent = _cur(desP);
+    _byId("seoBarLabel").textContent    = _cur(seoP);
+
+    _byId("heroTotal").textContent    = _cur(income);
+    _byId("grandTotal").textContent   = _cur(income);
+    _byId("heroReferrals").textContent = total;
+    _byId("grandSub").textContent     = "Modeled from "+total+" referral"+(total===1?"":"s")+" across CFO, Web, Design, and SEO.";
+    _byId("heroSub").textContent      = "Based on "+total+" projected referral"+(total===1?"":"s")+" across all Turnkey Services lines.";
+    _byId("cfoModeTag").textContent   = cfoM==="flat" ? "Flat $500" : "10% Annual";
+
+    var svc=[{n:"CFO",v:cfoP},{n:"Web",v:webP},{n:"Design",v:desP},{n:"SEO",v:seoP}];
+    var best={n:"\u2014",v:0};
+    for(var i=0;i<svc.length;i++){ if(svc[i].v>best.v) best=svc[i]; }
+    _byId("heroBestLine").textContent = best.v>0 ? best.n : "\u2014";
+
+    var mx=Math.max(cfoP,webP,desP,seoP,1);
+    _byId("cfoBar").style.width    = (cfoP/mx)*100+"%";
+    _byId("webBar").style.width    = (webP/mx)*100+"%";
+    _byId("designBar").style.width = (desP/mx)*100+"%";
+    _byId("seoBar").style.width    = (seoP/mx)*100+"%";
+  }
+
+  /* ── event delegation: one listener on document handles everything ── */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest("[data-target]");
+    if(btn){
+      var t = _byId(btn.getAttribute("data-target"));
+      var s = parseInt(btn.getAttribute("data-step"),10);
+      t.value = Math.max(0, _sInt(t.value) + s);
+      _update();
+      return;
     }
-    function update(){
-      var v=getV();
-      els.cfoFeeValue.textContent=cur(v.cfoFee);
-      els.webFeeValue.textContent=cur(v.webFee);
-      els.designFeeValue.textContent=cur(v.desFee);
-      els.seoFeeValue.textContent=cur(v.seoFee);
-      els.cfoPayout.textContent=cur(v.cfoP);
-      els.webPayout.textContent=cur(v.webP);
-      els.designPayout.textContent=cur(v.desP);
-      els.seoPayout.textContent=cur(v.seoP);
-      els.cfoBarLabel.textContent=cur(v.cfoP);
-      els.webBarLabel.textContent=cur(v.webP);
-      els.designBarLabel.textContent=cur(v.desP);
-      els.seoBarLabel.textContent=cur(v.seoP);
-      els.heroTotal.textContent=cur(v.income);
-      els.grandTotal.textContent=cur(v.income);
-      els.heroReferrals.textContent=v.total;
-      els.grandSub.textContent="Modeled from "+v.total+" referral"+(v.total===1?"":"s")+" across CFO, Web, Design, and SEO.";
-      els.heroSub.textContent="Based on "+v.total+" projected referral"+(v.total===1?"":"s")+" across all Turnkey Services lines.";
-      els.cfoModeTag.textContent=v.cfoM==="flat"?"Flat $500":"10% Annual";
-      var svc=[{n:"CFO",v:v.cfoP},{n:"Web",v:v.webP},{n:"Design",v:v.desP},{n:"SEO",v:v.seoP}];
-      var best=svc.reduce(function(a,b){return b.v>a.v?b:a;},{n:"\u2014",v:0});
-      els.heroBestLine.textContent=best.v>0?best.n:"\u2014";
-      var mx=Math.max(v.cfoP,v.webP,v.desP,v.seoP,1);
-      els.cfoBar.style.width=(v.cfoP/mx)*100+"%";
-      els.webBar.style.width=(v.webP/mx)*100+"%";
-      els.designBar.style.width=(v.desP/mx)*100+"%";
-      els.seoBar.style.width=(v.seoP/mx)*100+"%";
+    var faq = e.target.closest(".faq-q");
+    if(faq){
+      faq.parentElement.classList.toggle("open");
+      return;
     }
-    var stepBtns=document.querySelectorAll("[data-target]");
-    for(var i=0;i<stepBtns.length;i++){
-      (function(b){
-        b.addEventListener("click",function(){
-          var t=byId(b.getAttribute("data-target"));
-          var s=parseInt(b.getAttribute("data-step"),10);
-          t.value=Math.max(0,sInt(t.value)+s);
-          update();
-        });
-      })(stepBtns[i]);
+  });
+
+  document.addEventListener("input", function(e){
+    var id = e.target.id;
+    if(id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
+       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
+      _update();
     }
-    for(va
+  });
+
+  document.addEventListener("change", function(e){
+    var id = e.target.id;
+    if(id==="cfoFlat"||id==="cfoRecurring"||id==="cfoFee"||id==="webFee"||id==="designFee"||id==="seoFee"||
+       id==="cfoReferrals"||id==="webReferrals"||id==="designReferrals"||id==="seoReferrals"){
+      _update();
+    }
+  });
+
+  /* ── initial render ── */
+  _update();
+  </script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                         
