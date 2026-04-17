@@ -1,19 +1,29 @@
-# Turnkey Services — Sacred Partner Program
+# TurnkeyCFO — Sacred Partner Program
 
-Partner referral income calculator for Turnkey CFO, Turnkey Web, Turnkey Design, and Turnkey SEO.
+Partner referral income calculator for Turnkey CFO, Web, Design, and SEO.
 
 ## Live Site
 
-Open `index.html` in any browser — it's a self-contained, single-file site with no external dependencies beyond Google Fonts.
+Open `index.html` in any browser — self-contained, single-file site with no dependencies beyond Google Fonts.
 
 ## Features
 
 - Interactive referral income calculator across 4 service lines
-- Real-time income projections with visual breakdowns
-- Partner earning scenarios (Connector, Builder, Strategic)
-- Comprehensive FAQ section
+- Real-time income projections with visual bar chart breakdowns
+- Partner earning scenarios (Connector, Builder, Strategic tiers)
+- 10-question FAQ accordion
+- 4-step "How It Works" walkthrough
+- Payout structure cards
 - Fully responsive (mobile, tablet, desktop)
-- On-brand Turnkey Services design system
+- Scroll-triggered fade-up animations
+
+## Brand
+
+Built on the **TurnkeyCFO rebrand** design system:
+- **Palette:** #16C784, #059669, #047857, #064E3B, #0B1F1A
+- **Typography:** Exo 2 (Bold / Semibold / Regular)
+- **Mode:** Light theme
+- **Tagline:** Financial clarity. Confident growth.
 
 ## Payout Structure
 
@@ -26,4 +36,4 @@ Open `index.html` in any browser — it's a self-contained, single-file site wit
 
 ---
 
-Built by Turnkey Services. One System. Every Solution.
+Built by TurnkeyCFO. Financial clarity. Confident growth.
