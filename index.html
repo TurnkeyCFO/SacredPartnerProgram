@@ -117,7 +117,7 @@
     .btn-outline:hover { background: rgba(22,199,132,0.06); border-color: var(--green-mid); }
 
     /* ── HERO ── */
-    .hero { padding: 56px 0 28px; }
+    .hero { padding: 40px 0 20px; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: stretch; }
     .panel {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -206,7 +206,7 @@
     .preview-card .value { display: block; font-size: 26px; letter-spacing: -0.04em; font-weight: 800; color: var(--text); }
 
     /* ── TRUST BAR ── */
-    .trust-bar { padding: 28px 0; }
+    .trust-bar { padding: 16px 0; }
     .trust-inner {
       display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
       padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -218,7 +218,7 @@
     }
 
     /* ── SECTIONS ── */
-    .section-head { margin-bottom: 36px; }
+    .section-head { margin-bottom: 24px; }
     .section-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--green-mid); margin-bottom: 10px;
@@ -231,7 +231,7 @@
     .section-divider { height: 3px; background: linear-gradient(90deg, var(--green-bright) 0%, transparent 50%); border-radius: 3px; margin-top: 16px; max-width: 180px; }
 
     /* ── HOW IT WORKS ── */
-    .how-section { padding: 48px 0 52px; }
+    .how-section { padding: 32px 0 36px; }
     .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .step-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -249,7 +249,7 @@
     .step-card p { color: var(--text-soft); font-size: 14px; line-height: 1.65; }
 
     /* ── CALCULATOR ── */
-    .section { padding: 24px 0 56px; }
+    .section { padding: 16px 0 40px; }
     .calc-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: start; }
     .service-grid { display: grid; gap: 18px; }
     .service-card {
@@ -383,7 +383,7 @@
     }
 
     /* ── SCENARIOS ── */
-    .scenarios-section { padding: 48px 0; }
+    .scenarios-section { padding: 32px 0; }
     .scenarios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .scenario-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -404,7 +404,7 @@
     .scenario-card .scenario-detail strong { color: var(--text); }
 
     /* ── PAYOUT LOGIC ── */
-    .logic-section { padding: 8px 0 56px; }
+    .logic-section { padding: 8px 0 36px; }
     .logic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .logic-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -422,7 +422,7 @@
     .logic-card p strong { color: var(--green-dark); }
 
     /* ── FAQ ── */
-    .faq-section { padding: 48px 0 56px; }
+    .faq-section { padding: 32px 0 40px; }
     .faq-grid { display: grid; gap: 10px; max-width: 900px; }
     .faq-item {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -446,7 +446,7 @@
     .faq-a strong { color: var(--text); }
 
     /* ── CTA ── */
-    .cta-section { padding: 48px 0 56px; }
+    .cta-section { padding: 32px 0 40px; }
     .cta-card {
       background: linear-gradient(135deg, var(--green-deep), var(--green-darkest));
       border-radius: 28px; padding: 52px; text-align: center; position: relative; overflow: hidden;
@@ -499,8 +499,17 @@
     }
 
     /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      animation: fadeUp 0.5s ease both;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.10s; }
+    .fade-up:nth-child(3) { animation-delay: 0.15s; }
+    .fade-up:nth-child(4) { animation-delay: 0.20s; }
   </style>
 </head>
 <body>
@@ -993,6 +1002,4 @@
     [els.cfoFlat,els.cfoRecurring].forEach(i=>i.addEventListener("change",update));
     update();
     // FAQ
-    document.querySelectorAll(".faq-q").forEach(btn=>{btn.addEventListener("click",()=>{btn.parentElement.classList.toggle("open")})});
-    // Fade-up
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target)}})},{threshold:0.08,rootMargin
+    document.querySelectorAll(".faq-q").forEach(btn=>{btn.addEventListener("click",()=>{bt
