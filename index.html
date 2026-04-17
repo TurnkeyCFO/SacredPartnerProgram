@@ -239,7 +239,7 @@
       color: var(--green-mid); margin-bottom: 10px;
     }
     .section-head h2 {
-      font-size: clamp(26px, 3.8vw, 46px); line-height: 1.02; letter-spacing: -0.04em;
+      font-size: clamp(26px, 3.8vw, 46px); line-height: 1.15; letter-spacing: -0.04em;
       font-weight: 800;
       background: linear-gradient(90deg, #0B0B08, #5A5A5A, #0B0B08);
       background-size: 200% auto;
@@ -540,6 +540,25 @@
     .fade-up:nth-child(2) { animation-delay: 0.10s; }
     .fade-up:nth-child(3) { animation-delay: 0.15s; }
     .fade-up:nth-child(4) { animation-delay: 0.20s; }
+    /* ── SCROLL GLIDE ── */
+    .glide-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .glide-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .glide-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .glide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
   </style>
 </head>
 <body>
@@ -623,7 +642,7 @@
       <!-- HOW IT WORKS -->
       <section class="how-section" id="how-it-works">
         <div class="container">
-          <div class="section-head fade-up">
+          <div class="section-head glide-in fade-up">
             <div class="section-eyebrow">How It Works</div>
             <h2>Four Steps to Partner Income</h2>
             <p>No complex applications. No waiting months. Make an introduction, we handle the rest, and you get paid when the deal closes.</p>
@@ -657,7 +676,7 @@
       <!-- CALCULATOR -->
       <section class="section" id="calculator">
         <div class="container">
-          <div class="section-head fade-up">
+          <div class="section-head glide-in fade-up">
             <div class="section-eyebrow">Partner Calculator</div>
             <h2>Model Your Referral Income</h2>
             <p>Adjust your expected referrals by service line and see exactly what your network could generate over the next 12 months.</p>
@@ -668,7 +687,7 @@
               <!-- CFO -->
               <section class="service-card fade-up">
                 <div class="service-head">
-                  <div class="service-title-wrap">
+                  <div class="service-title-wrap glide-in-left">
                     <h3>Turnkey CFO</h3>
                     <p>Choose a <strong>$500 flat payout per referral</strong> or <strong>10% of annual recurring revenue</strong> (monthly fee &times; 12). Higher-value clients make the percentage option far more lucrative.</p>
                   </div>
@@ -715,7 +734,7 @@
               <!-- WEB -->
               <section class="service-card fade-up">
                 <div class="service-head">
-                  <div class="service-title-wrap">
+                  <div class="service-title-wrap glide-in-left">
                     <h3>TurnkeyWEB</h3>
                     <p>Earn a <strong>one-time 10% share of the project fee</strong>. Custom websites, redesigns, and web applications all qualify.</p>
                   </div>
@@ -751,7 +770,7 @@
               <!-- DESIGN -->
               <section class="service-card fade-up">
                 <div class="service-head">
-                  <div class="service-title-wrap">
+                  <div class="service-title-wrap glide-in-left">
                     <h3>TurnkeyDESIGN</h3>
                     <p>Brand identity, logo systems, and creative projects pay a <strong>one-time 10% share of the design fee</strong>.</p>
                   </div>
@@ -787,7 +806,7 @@
               <!-- SEO -->
               <section class="service-card fade-up">
                 <div class="service-head">
-                  <div class="service-title-wrap">
+                  <div class="service-title-wrap glide-in-left">
                     <h3>Turnkey SEO</h3>
                     <p>SEO referrals pay <strong>1&times; the first month service fee</strong>. Monthly retainers mean real recurring value for referred clients.</p>
                   </div>
@@ -827,7 +846,7 @@
                 <h3>Your Results</h3>
                 <div class="badge-est">12-Month Estimate</div>
               </div>
-              <div class="total-card">
+              <div class="total-card glide-in">
                 <span class="label">Total 12-Month Partner Income</span>
                 <span class="big-num" id="grandTotal">$0</span>
                 <p class="sub" id="grandSub">Based on your current referral assumptions across all Turnkey Services lines.</p>
@@ -855,7 +874,7 @@
       <!-- SCENARIOS -->
       <section class="scenarios-section" id="scenarios">
         <div class="container">
-          <div class="section-head fade-up">
+          <div class="section-head glide-in fade-up">
             <div class="section-eyebrow">Earning Scenarios</div>
             <h2>What Partners Like You Earn</h2>
             <p>Real-world scenarios based on typical partner activity levels. Your results depend on referral volume and deal size.</p>
@@ -887,7 +906,7 @@
       <!-- PAYOUT LOGIC -->
       <section class="logic-section" id="summary">
         <div class="container">
-          <div class="section-head fade-up">
+          <div class="section-head glide-in fade-up">
             <div class="section-eyebrow">Payout Structure</div>
             <h2>Clear Terms. No Surprises.</h2>
             <div class="section-divider"></div>
@@ -920,7 +939,7 @@
       <!-- FAQ -->
       <section class="faq-section" id="faq">
         <div class="container">
-          <div class="section-head fade-up">
+          <div class="section-head glide-in fade-up">
             <div class="section-eyebrow">Frequently Asked Questions</div>
             <h2>Everything You Need to Know</h2>
             <div class="section-divider"></div>
@@ -943,7 +962,7 @@
       <!-- CTA -->
       <section class="cta-section">
         <div class="container">
-          <div class="cta-card fade-up">
+          <div class="cta-card glide-in fade-up">
             <h2>Ready to Turn Introductions<br/>into Income?</h2>
             <p>One referral, one closed deal, one payout. No complexity, no hidden terms. Start modeling your partner income today.</p>
             <div class="cta-buttons">
@@ -1058,6 +1077,20 @@
   });
 
   _update();
+    /* Scroll glide observer */
+    (function(){
+      var els = document.querySelectorAll(".glide-in, .glide-in-left");
+      if(!els.length) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            e.target.classList.add("visible");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+      els.forEach(function(el){ io.observe(el); });
+    })();
   </script>
 </body>
 </html>
