@@ -10,17 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #FFFFFF;
-      --bg-soft: #F7F7F7;
-      --bg-tint: #EDEDED;
-      --text: #0B0B08;
-      --text-mid: #1A1A1A;
-      --text-soft: #5A5A5A;
-      --text-muted: #A1A1A1;
-      --border: rgba(11, 11, 8, 0.09);
-      --border-accent: rgba(26, 26, 26, 0.18);
-      --shadow: 0 20px 60px rgba(11, 11, 8, 0.08);
-      --shadow-sm: 0 4px 20px rgba(11, 11, 8, 0.06);
+      --bg: #0B0B08;
+      --bg-soft: #141414;
+      --bg-tint: #1A1A1A;
+      --text: #EDEDED;
+      --text-mid: #D0D0D0;
+      --text-soft: #A1A1A1;
+      --text-muted: #5A5A5A;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(255, 255, 255, 0.15);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.3);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
@@ -39,12 +39,12 @@
     .bg-glow {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(26,26,26,0.04), transparent),
-        radial-gradient(ellipse 50% 40% at 10% 30%, rgba(45,45,45,0.03), transparent);
+        radial-gradient(ellipse 70% 50% at 80% 0%, rgba(255,255,255,0.02), transparent),
+        radial-gradient(ellipse 50% 40% at 10% 30%, rgba(255,255,255,0.015), transparent);
     }
     .bg-watermark {
-      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 900px; max-width: 90vw; opacity: 0.035; pointer-events: none; z-index: 0;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.4; pointer-events: none; z-index: 0;
     }
     .shell { position: relative; z-index: 1; }
     .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
@@ -54,7 +54,7 @@
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(20px) saturate(1.3);
       -webkit-backdrop-filter: blur(20px) saturate(1.3);
-      background: rgba(255,255,255,0.88);
+      background: rgba(11,11,8,0.85);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
@@ -78,8 +78,8 @@
       cursor: pointer; transition: all 200ms ease; font-weight: 600; font-size: 13px;
       color: var(--text-soft); background: transparent; font-family: inherit;
     }
-    .chip:hover { border-color: #1A1A1A; color: #0B0B08; background: rgba(26,26,26,0.04); }
-    .chip.active { background: #0B0B08; color: #fff; border-color: #0B0B08; }
+    .chip:hover { border-color: rgba(255,255,255,0.3); color: #EDEDED; background: rgba(255,255,255,0.06); }
+    .chip.active { background: #EDEDED; color: #0B0B08; border-color: #EDEDED; }
 
     /* ── HERO ── */
     .hero {
@@ -88,17 +88,17 @@
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
       border-radius: 999px; border: 1px solid var(--border-accent);
-      background: rgba(26,26,26,0.04); color: #1A1A1A;
+      background: rgba(255,255,255,0.06); color: #D0D0D0;
       font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700;
       margin-bottom: 20px;
     }
     .hero h1 {
       font-size: clamp(32px, 4.5vw, 52px); line-height: 1.05;
-      letter-spacing: -0.04em; font-weight: 800; color: #0B0B08;
+      letter-spacing: -0.04em; font-weight: 800; color: #EDEDED;
       margin-bottom: 14px;
     }
     .hero h1 .accent {
-      background: linear-gradient(90deg, #0B0B08, #5A5A5A, #A1A1A1, #5A5A5A, #0B0B08);
+      background: linear-gradient(90deg, #EDEDED, #A1A1A1, #5A5A5A, #A1A1A1, #EDEDED);
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -114,7 +114,7 @@
     }
     .section-icon {
       width: 48px; height: 48px; border-radius: 14px;
-      background: linear-gradient(135deg, #0B0B08 0%, #2D2D2D 50%, #5A5A5A 100%);
+      background: linear-gradient(135deg, #2D2D2D 0%, #5A5A5A 50%, #A1A1A1 100%);
       color: #fff; font-size: 20px; display: grid; place-items: center; flex-shrink: 0;
     }
     .section-label h2 {
@@ -128,7 +128,7 @@
       vertical-align: middle;
     }
     .section-divider {
-      height: 3px; background: linear-gradient(90deg, #0B0B08 0%, #5A5A5A 40%, transparent 80%);
+      height: 3px; background: linear-gradient(90deg, #A1A1A1 0%, #5A5A5A 40%, transparent 80%);
       border-radius: 3px; max-width: 160px; margin-bottom: 20px;
     }
     .section-desc {
@@ -140,9 +140,10 @@
     .link-card {
       display: flex; align-items: center; gap: 16px;
       padding: 20px 24px; border-radius: var(--radius-lg);
-      background: var(--bg); border: 1px solid var(--border);
+      background: rgba(20,20,20,0.75); border: 1px solid var(--border);
       box-shadow: var(--shadow-sm); text-decoration: none; color: inherit;
       transition: all 0.25s ease; position: relative; overflow: hidden;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     }
     .link-card:hover {
       transform: translateY(-3px); border-color: var(--border-accent);
@@ -156,7 +157,7 @@
     .link-card:hover::after { left: 100%; }
     .link-icon {
       width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
-      background: rgba(26,26,26,0.06); border: 1px solid var(--border-accent);
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border-accent);
       display: grid; place-items: center; font-size: 18px;
     }
     .link-info { flex: 1; min-width: 0; }
@@ -170,7 +171,7 @@
     .link-arrow {
       font-size: 18px; color: var(--text-muted); transition: transform 0.2s, color 0.2s; flex-shrink: 0;
     }
-    .link-card:hover .link-arrow { transform: translateX(3px); color: var(--text); }
+    .link-card:hover .link-arrow { transform: translateX(3px); color: #EDEDED; }
 
     /* ── COMING SOON CARDS ── */
     .link-card.disabled {
@@ -178,7 +179,7 @@
     }
     .coming-placeholder {
       padding: 32px 24px; border-radius: var(--radius-lg);
-      background: var(--bg-soft); border: 1px dashed var(--border);
+      background: rgba(20,20,20,0.5); border: 1px dashed var(--border);
       text-align: center; color: var(--text-muted); font-size: 14px; font-weight: 600;
     }
 
@@ -368,10 +369,4 @@
       <div class="container">
         <div class="footer-card">
           <p>These resources are provided exclusively for TurnkeyCFO Sacred Partners. Links open in a new tab for easy sharing.</p>
-          <div class="footer-brand">&copy; 2026 TurnkeyCFO</div>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+          <div class="footer-brand">&copy; 20
